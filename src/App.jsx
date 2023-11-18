@@ -1,19 +1,37 @@
-import { useState } from "react";
+import { useContext, useEffect } from "react";
+import { AppContext } from "./Contexts/AppContext.jsx";
+
 import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0);
+  const { fetchData, destinations, crew, technology } = useContext(AppContext);
+
+  useEffect(() => {
+    fetchData();
+  }, []);
 
   return (
     <>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>count is {count}</button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">Click on the Vite and React logos to learn more</p>
+      <h1>Space Tourism</h1>
+      <h2>Take a trip to Mars</h2>
+      <h3>Destinations</h3>
+      <ul>
+        {destinations.map((destination) => (
+          <li key={destination.id}>{destination.name}</li>
+        ))}
+      </ul>
+      <h3>Crew</h3>
+      <ul>
+        {crew.map((crewMember) => (
+          <li key={crewMember.id}>{crewMember.name}</li>
+        ))}
+      </ul>
+      <h3>Technology</h3>
+      <ul>
+        {technology.map((tech) => (
+          <li key={tech.id}>{tech.name}</li>
+        ))}
+      </ul>
     </>
   );
 }
