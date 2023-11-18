@@ -14,11 +14,11 @@ function App() {
   return (
     <>
       <ol>
-        <li>
+        <li key="home" value="0">
           <NavLink to="/">Home</NavLink>
         </li>
-        {sections.map((section) => (
-          <li key={section}>
+        {sections.map((section, i) => (
+          <li key={section} value={i + 1}>
             <NavLink to={section}>{section}</NavLink>
           </li>
         ))}

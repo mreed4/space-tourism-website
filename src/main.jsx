@@ -6,7 +6,10 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./index.css";
 
 import App from "./App.jsx";
-import DestinationPage from "./Components/Pages/DestinationPage.jsx";
+
+import DestinationsPage from "./Components/Pages/DestinationsPage.jsx";
+import DestinationPage from "./Components/Pages/DestinationsPage.jsx";
+
 import CrewPage from "./Components/Pages/CrewPage.jsx";
 import StartPage from "./Components/Pages/StartPage.jsx";
 import TechnologyPage from "./Components/Pages/TechnologyPage.jsx";
@@ -18,8 +21,8 @@ ReactDOM.createRoot(document.getElementById("root")).render(
         <Routes>
           <Route path="/" element={<App />}>
             <Route path="" element={<StartPage />} />
-            <Route path="destinations" element={<DestinationPage />}>
-              <Route path=":destinationId" />
+            <Route path="destinations" element={<DestinationsPage />}>
+              <Route path=":destinationId" element={<DestinationPage />} />
             </Route>
             <Route path="crew" element={<CrewPage />} />
             <Route path="technology" element={<TechnologyPage />} />

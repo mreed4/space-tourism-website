@@ -40,10 +40,11 @@ function AppProvider({ children }) {
 
   async function getDestinationData(destinationId) {
     const response = await fetch("./src/assets/data/data.json");
+    console.log(response);
     const data = await response.json();
 
     const destination = data.destinations.find((destination) => destination.id === destinationId);
-
+    console.log(destination);
     setDestination(destination);
   }
 

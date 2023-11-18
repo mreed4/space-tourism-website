@@ -1,9 +1,11 @@
-import PropTypes from "prop-types";
 import { useContext, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import { AppContext } from "../../Contexts/AppContext.jsx";
 
-export default function DestinationPage({ destinationId }) {
-  const { destination, getDestinationData } = useContext(AppContext);
+export default function DestinationPage() {
+  const { getDestinationData, destination } = useContext(AppContext);
+  const location = useLocation();
+  const destinationId = location.state;
 
   useEffect(() => {
     getDestinationData(destinationId);
@@ -13,16 +15,8 @@ export default function DestinationPage({ destinationId }) {
     <>
       <h1>{destination.name}</h1>
       <p>{destination.description}</p>
-      <p>{destination.location}</p>
-      <p>{destination.price}</p>
+      <p>{destination.distance}</p>
+      <p>{destination.travel}</p>
     </>
   );
 }
-
-DestinationPage.defaultProps = {
-  destinationId: "moon",
-};
-
-DestinationPage.propTypes = {
-  destinationId: PropTypes.string,
-};
