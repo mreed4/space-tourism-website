@@ -1,6 +1,14 @@
 import PropTypes from "prop-types";
+import { useContext, useEffect } from "react";
+import { AppContext } from "../../Contexts/AppContext.jsx";
 
-export default function DestinationPage({ destination }) {
+export default function DestinationPage({ destinationId }) {
+  const { destination, getDestinationData } = useContext(AppContext);
+
+  useEffect(() => {
+    getDestinationData(destinationId);
+  }, [destinationId]);
+
   return (
     <>
       <h1>{destination.name}</h1>
@@ -11,11 +19,10 @@ export default function DestinationPage({ destination }) {
   );
 }
 
+DestinationPage.defaultProps = {
+  destinationId: "moon",
+};
+
 DestinationPage.propTypes = {
-  destination: PropTypes.shape({
-    name: PropTypes.string,
-    description: PropTypes.string,
-    location: PropTypes.string,
-    price: PropTypes.number,
-  }),
+  destinationId: PropTypes.string,
 };
