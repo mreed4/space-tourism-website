@@ -1,15 +1,37 @@
+@import url("https://fonts.googleapis.com/css2?family=Barlow&family=Barlow+Condensed:wght@400;700&family=Bellefair&display=swap");
+
 :root {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+
+  --white: hsla(0, 0%, 100%, 1);
+  --white-50: hsla(0, 0%, 100%, 0.5);
+  --white-25: hsla(0, 0%, 100%, 0.25);
+  --white-80: hsla(0, 0%, 100%, 0.8);
+  --very-light-blue: hsla(231, 77%, 90%, 1);
+  --black: hsla(230, 35%, 7%, 1);
+
+  color: var(--white);
+  font-size: 18px;
+  font-family: "Barlow", sans-serif;
+  font-weight: 400;
 }
 
-:root:has(article.destinations-page) {
+:root:has(section.destinations-page) {
   background-image: url("/img/destination/background-destination-desktop.jpg");
 }
 
 :root:has(section.start-page) {
   background-image: url("/img/home/background-home-desktop.jpg");
+}
+
+:root:has(section.technologies-page) {
+  background-image: url("/img/technology/background-technology-desktop.jpg");
+}
+
+:root:has(section.crew-page) {
+  background-image: url("/img/crew/background-crew-desktop.jpg");
 }
 
 * {
@@ -18,8 +40,55 @@
   box-sizing: border-box;
 }
 
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+a:hover {
+  /* color: var(--white); */
+}
+
 body {
   min-height: 100vh;
+}
+
+nav {
+  font-family: "Barlow Condensed", sans-serif;
+  text-transform: uppercase;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-weight: 400;
+}
+
+h2 {
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 28px;
+  text-transform: uppercase;
+  letter-spacing: 4.72px;
+}
+
+h3 {
+  font-size: 100px;
+  font-family: "Bellefair", serif;
+  text-transform: uppercase;
+}
+
+h4 {
+  font-size: 14px;
+  font-family: "Barlow Condensed", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 2.35px;
+  color: var(--very-light-blue);
+}
+
+p {
+  line-height: 32px;
+  color: var(--very-light-blue);
 }
 
 nav ol {
@@ -28,17 +97,34 @@ nav ol {
   align-items: center;
 }
 
-nav ol li {
-  margin: 0 1rem;
+ol.main-nav-list li a,
+ol.destinations-nav-list li a {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-bottom: 2px solid transparent;
+  letter-spacing: 2.7px;
+  font-size: 16px;
+}
+
+ol.main-nav-list li a:hover,
+ol.destinations-nav-list li a:hover {
+  border-bottom: 2px solid var(--white-50);
 }
 
 ol.main-nav-list {
+  /* https://stackoverflow.com/questions/3153019/remove-decimal-from-ordered-ol-list-via-css */
   counter-reset: item;
 }
 
 ol.main-nav-list li {
   display: flex;
   align-items: center;
+  margin-left: 2.5rem;
+}
+
+ol.main-nav-list li a {
+  padding: 1rem 0;
 }
 
 ol.main-nav-list li::before {
@@ -46,8 +132,15 @@ ol.main-nav-list li::before {
   margin-right: 0.5rem;
   content: "0" counter(item);
   counter-increment: item;
+  font-weight: 700;
+  letter-spacing: 2.7px;
 }
 
 ol.destinations-nav-list {
   list-style: none;
+}
+
+.section-num {
+  font-weight: 700;
+  color: var(--white-25);
 }

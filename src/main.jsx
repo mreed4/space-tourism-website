@@ -12,7 +12,7 @@ import DestinationPage from "./Components/Pages/DestinationPage.jsx";
 
 import CrewPage from "./Components/Pages/CrewPage.jsx";
 import StartPage from "./Components/Pages/StartPage.jsx";
-import TechnologyPage from "./Components/Pages/TechnologyPage.jsx";
+import TechnologiesPage from "./Components/Pages/TechnologiesPage.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
@@ -26,7 +26,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
               <Route path=":destinationName" element={<DestinationPage />} />
             </Route>
             <Route path="crew" element={<CrewPage />} />
-            <Route path="technology" element={<TechnologyPage />} />
+            <Route path="technology" element={<TechnologiesPage />} />
             <Route path="*" element={<h1>404</h1>} />
           </Route>
         </Routes>

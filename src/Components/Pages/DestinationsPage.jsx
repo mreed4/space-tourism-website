@@ -40,10 +40,12 @@ export default function DestinationsPage() {
   }, []);
 
   return (
-    <article className="destinations-page">
-      <h2>01 Pick your destination</h2>
+    <section className="destinations-page">
+      <h2>
+        <span className="section-num">01</span> Pick your destination
+      </h2>
       <DestinationsNav />
       <Outlet /> {/* DestinationPage */}
-    </article>
+    </section>
   );
 }

@@ -35,7 +35,7 @@ function App() {
         <MainNav />
       </header>
       <main>
-        <Outlet /> {/* Outlet: CrewPage, DestinationsPage, StartPage, TechnologyPage */}
+        <Outlet /> {/* Outlet: CrewPage, DestinationsPage, StartPage, TechnologiesPage */}
       </main>
     </>
   );

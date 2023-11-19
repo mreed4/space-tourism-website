@@ -12,18 +12,18 @@ export default function DestinationPage() {
   }, [destinationName]);
 
   return (
-    <section className={`destination-page ${destinationName}`}>
+    <article className={`destination-page ${destinationName}`}>
       <img src={destination?.images?.["webp"] || destination?.images?.["png"]} alt={destination.name} />
       <h3>{destination.name}</h3>
       <p>{destination.description}</p>
-      <p>
-        <span>Avg. Distance</span>
-        {destination.distance}
-      </p>
-      <p>
-        <span>Est. Travel Time</span>
-        {destination.travel}
-      </p>
-    </section>
+      <div>
+        <h4>Avg. Distance</h4>
+        <p>{destination.distance}</p>
+      </div>
+      <div>
+        <h4>Est. Travel Time</h4>
+        <p>{destination.travel}</p>
+      </div>
+    </article>
   );
 }
