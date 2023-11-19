@@ -1,0 +1,53 @@
+:root {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+:root:has(article.destinations-page) {
+  background-image: url("/img/destination/background-destination-desktop.jpg");
+}
+
+:root:has(section.start-page) {
+  background-image: url("/img/home/background-home-desktop.jpg");
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+}
+
+nav ol {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+nav ol li {
+  margin: 0 1rem;
+}
+
+ol.main-nav-list {
+  counter-reset: item;
+}
+
+ol.main-nav-list li {
+  display: flex;
+  align-items: center;
+}
+
+ol.main-nav-list li::before {
+  display: block;
+  margin-right: 0.5rem;
+  content: "0" counter(item);
+  counter-increment: item;
+}
+
+ol.destinations-nav-list {
+  list-style: none;
+}

@@ -1,6 +1,6 @@
 export default function StartPage() {
   return (
-    <>
+    <section className="start-page">
       <h1>
         So, you want to travel to
         <span>Space</span>
@@ -10,6 +10,6 @@ export default function StartPage() {
         Well sit back, and relax because we’ll give you a truly out of this world experience!
       </p>
       <button>Explore</button>
-    </>
+    </section>
   );
 }

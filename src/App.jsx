@@ -4,16 +4,11 @@ import { AppContext } from "./Contexts/AppContext.jsx";
 
 import "./App.css";
 
-function App() {
-  const { getSections, sections } = useContext(AppContext);
-
-  useEffect(() => {
-    getSections();
-  }, []);
-
+function MainNav() {
+  const { sections } = useContext(AppContext);
   return (
-    <>
-      <ol>
+    <nav>
+      <ol className="main-nav-list">
         <li key="home" value="0">
           <NavLink to="/">Home</NavLink>
         </li>
@@ -23,7 +18,25 @@ function App() {
           </li>
         ))}
       </ol>
-      <Outlet /> {/* CrewPage, DestinationPage, StartPage, TechnologyPage */}
+    </nav>
+  );
+}
+
+function App() {
+  const { getSections } = useContext(AppContext);
+
+  useEffect(() => {
+    getSections();
+  }, []);
+
+  return (
+    <>
+      <header>
+        <MainNav />
+      </header>
+      <main>
+        <Outlet /> {/* Outlet: CrewPage, DestinationsPage, StartPage, TechnologyPage */}
+      </main>
     </>
   );
 }

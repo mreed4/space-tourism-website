@@ -11,17 +11,19 @@ export default function DestinationPage() {
     getDestinationData(destinationName);
   }, [destinationName]);
 
-  useEffect(() => {
-    console.log(destination.images);
-  }, [destination]);
-
   return (
-    <section className={`destination ${destinationName}`}>
-      <h1>{destination.name}</h1>
-      <img src={destination.images["webp"] || destination.images["png"]} alt={destination.name} />
+    <section className={`destination-page ${destinationName}`}>
+      <img src={destination?.images?.["webp"] || destination?.images?.["png"]} alt={destination.name} />
+      <h3>{destination.name}</h3>
       <p>{destination.description}</p>
-      <p>{destination.distance}</p>
-      <p>{destination.travel}</p>
+      <p>
+        <span>Avg. Distance</span>
+        {destination.distance}
+      </p>
+      <p>
+        <span>Est. Travel Time</span>
+        {destination.travel}
+      </p>
     </section>
   );
 }
