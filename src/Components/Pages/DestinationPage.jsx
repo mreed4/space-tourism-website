@@ -11,9 +11,14 @@ export default function DestinationPage() {
     getDestinationData(destinationName);
   }, [destinationName]);
 
+  useEffect(() => {
+    console.log(destination.images);
+  }, [destination]);
+
   return (
     <section className={`destination ${destinationName}`}>
       <h1>{destination.name}</h1>
+      <img src={destination.images["webp"] || destination.images["png"]} alt={destination.name} />
       <p>{destination.description}</p>
       <p>{destination.distance}</p>
       <p>{destination.travel}</p>
