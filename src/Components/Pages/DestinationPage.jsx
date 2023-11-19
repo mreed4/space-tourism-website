@@ -8,10 +8,6 @@ export default function DestinationPage() {
   const destinationName = location.state;
 
   useEffect(() => {
-    console.log(destinationName);
-  }, []);
-
-  useEffect(() => {
     getDestinationData(destinationName);
   }, [destinationName]);
 
