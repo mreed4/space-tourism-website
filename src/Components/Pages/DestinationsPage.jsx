@@ -1,5 +1,5 @@
 import { useContext, useEffect } from "react";
-import { Link, Outlet } from "react-router-dom";
+import { NavLink, Outlet } from "react-router-dom";
 import { AppContext } from "../../Contexts/AppContext.jsx";
 
 export default function DestinationsPage() {
@@ -10,17 +10,17 @@ export default function DestinationsPage() {
   }, []);
 
   return (
-    <>
+    <article className="destinations">
       <ol>
         {destinations.map((destination) => (
-          <li key={destination.id}>
-            <Link to={destination.id} state={destination.id}>
-              {destination.name}
-            </Link>
+          <li key={destination}>
+            <NavLink to={destination} state={destination}>
+              {destination}
+            </NavLink>
           </li>
         ))}
       </ol>
-      <Outlet />
-    </>
+      <Outlet /> {/* DestinationPage */}
+    </article>
   );
 }

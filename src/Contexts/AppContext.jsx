@@ -11,40 +11,40 @@ function AppProvider({ children }) {
   const [destination, setDestination] = useState({});
 
   async function getDestinations() {
-    const response = await fetch("./src/assets/data/data.json");
+    const response = await fetch("/src/assets/data/data.json");
     const data = await response.json();
 
-    setDestinations(data.destinations);
+    setDestinations(data.destinations.map((destination) => destination.id));
   }
 
   async function getCrew() {
-    const response = await fetch("./src/assets/data/data.json");
+    const response = await fetch("/src/assets/data/data.json");
     const data = await response.json();
 
     setCrew(data.crew);
   }
 
   async function getTechnology() {
-    const response = await fetch("./src/assets/data/data.json");
+    const response = await fetch("/src/assets/data/data.json");
     const data = await response.json();
 
     setTechnology(data.technology);
   }
 
   async function getSections() {
-    const response = await fetch("./src/assets/data/data.json");
+    const response = await fetch("/src/assets/data/data.json");
     const data = await response.json();
 
     setSections(Object.keys(data));
   }
 
-  async function getDestinationData(destinationId) {
-    const response = await fetch("./src/assets/data/data.json");
+  async function getDestinationData(destinationName) {
+    const response = await fetch("/src/assets/data/data.json");
     console.log(response);
     const data = await response.json();
 
-    const destination = data.destinations.find((destination) => destination.id === destinationId);
-    console.log(destination);
+    const destination = data.destinations.find((destination) => destination.id === destinationName);
+
     setDestination(destination);
   }
 
