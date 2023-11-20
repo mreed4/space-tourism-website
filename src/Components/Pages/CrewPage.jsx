@@ -1,7 +1,7 @@
 export default function CrewPage() {
   return (
     <section className="crew-page">
-      <h1>Crew</h1>
+      <h2>Crew</h2>
     </section>
   );
 }

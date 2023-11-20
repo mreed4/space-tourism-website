@@ -32,6 +32,9 @@ function App() {
   return (
     <>
       <header>
+        <h1>
+          <img src="/img/shared/logo.svg" alt="Space Tourism" />
+        </h1>
         <MainNav />
       </header>
       <main>

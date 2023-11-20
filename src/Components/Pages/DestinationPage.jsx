@@ -13,16 +13,20 @@ export default function DestinationPage() {
 
   return (
     <article className={`destination-page ${destinationName}`}>
-      <img src={destination?.images?.["webp"] || destination?.images?.["png"]} alt={destination.name} />
-      <h3>{destination.name}</h3>
-      <p>{destination.description}</p>
-      <div>
-        <h4>Avg. Distance</h4>
-        <p>{destination.distance}</p>
+      <div className="planet-wrapper">
+        <img src={destination?.images?.["webp"] || destination?.images?.["png"]} alt={destination.name} />
       </div>
-      <div>
-        <h4>Est. Travel Time</h4>
-        <p>{destination.travel}</p>
+      <div className="content">
+        <h3>{destination.name}</h3>
+        <p className="normal">{destination.description}</p>
+        <div>
+          <h4>Avg. Distance</h4>
+          <p>{destination.distance}</p>
+        </div>
+        <div>
+          <h4>Est. Travel Time</h4>
+          <p>{destination.travel}</p>
+        </div>
       </div>
     </article>
   );

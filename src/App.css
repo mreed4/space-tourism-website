@@ -6,8 +6,11 @@
   background-repeat: no-repeat;
 
   --white: hsla(0, 0%, 100%, 1);
-  --white-50: hsla(0, 0%, 100%, 0.5);
+
+  --white-10: hsla(0, 0%, 100%, 0.1);
   --white-25: hsla(0, 0%, 100%, 0.25);
+  --white-40: hsla(0, 0%, 100%, 0.4);
+  --white-50: hsla(0, 0%, 100%, 0.5);
   --white-80: hsla(0, 0%, 100%, 0.8);
   --very-light-blue: hsla(231, 77%, 90%, 1);
   --black: hsla(230, 35%, 7%, 1);
@@ -38,6 +41,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  text-transform: uppercase;
 }
 
 a {
@@ -53,9 +57,56 @@ body {
   min-height: 100vh;
 }
 
+#root {
+  min-height: 100vh;
+  padding-top: 3rem;
+}
+
+header,
+main {
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+main {
+  height: 100%;
+}
+
+header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
 nav {
   font-family: "Barlow Condensed", sans-serif;
-  text-transform: uppercase;
+}
+
+article,
+section.start-page {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+section.start-page .content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  width: fit-content;
+}
+
+section.start-page .button-wrapper {
+  width: 450px;
+}
+
+section.start-page .content p {
+  width: 444px;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
 }
 
 h1,
@@ -68,20 +119,29 @@ h4 {
 h2 {
   font-family: "Barlow Condensed", sans-serif;
   font-size: 28px;
-  text-transform: uppercase;
   letter-spacing: 4.72px;
+}
+
+.start-page h2 {
+  color: var(--very-light-blue);
+}
+
+.start-page h2 span {
+  font-size: 150px;
+  font-family: "Bellefair", serif;
+  line-height: 171.9px;
+  color: var(--white);
+  display: block;
 }
 
 h3 {
   font-size: 100px;
   font-family: "Bellefair", serif;
-  text-transform: uppercase;
 }
 
 h4 {
   font-size: 14px;
   font-family: "Barlow Condensed", sans-serif;
-  text-transform: uppercase;
   letter-spacing: 2.35px;
   color: var(--very-light-blue);
 }
@@ -91,10 +151,42 @@ p {
   color: var(--very-light-blue);
 }
 
+h4 + p {
+  font-family: "Bellefair", serif;
+  font-size: 28px;
+  line-height: 32.09px;
+  color: var(--white);
+}
+
 nav ol {
   display: flex;
   justify-content: flex-end;
   align-items: center;
+}
+
+ol.main-nav-list {
+  /* https://stackoverflow.com/questions/3153019/remove-decimal-from-ordered-ol-list-via-css */
+  counter-reset: item;
+
+  background-color: var(--white-10);
+  backdrop-filter: blur(1.5rem);
+  padding-right: 2rem;
+  border-radius: 1rem;
+}
+
+ol.destinations-nav-list {
+  list-style: none;
+}
+
+ol.main-nav-list li {
+  display: flex;
+  align-items: center;
+  margin-left: 2.5rem;
+  border-bottom: 2px solid transparent;
+}
+
+ol.main-nav-list li a {
+  padding: 2rem 0;
 }
 
 ol.main-nav-list li a,
@@ -102,29 +194,13 @@ ol.destinations-nav-list li a {
   display: block;
   width: 100%;
   height: 100%;
-  border-bottom: 2px solid transparent;
   letter-spacing: 2.7px;
   font-size: 16px;
 }
 
-ol.main-nav-list li a:hover,
+ol.main-nav-list li:hover,
 ol.destinations-nav-list li a:hover {
   border-bottom: 2px solid var(--white-50);
-}
-
-ol.main-nav-list {
-  /* https://stackoverflow.com/questions/3153019/remove-decimal-from-ordered-ol-list-via-css */
-  counter-reset: item;
-}
-
-ol.main-nav-list li {
-  display: flex;
-  align-items: center;
-  margin-left: 2.5rem;
-}
-
-ol.main-nav-list li a {
-  padding: 1rem 0;
 }
 
 ol.main-nav-list li::before {
@@ -136,11 +212,30 @@ ol.main-nav-list li::before {
   letter-spacing: 2.7px;
 }
 
-ol.destinations-nav-list {
-  list-style: none;
+p.normal {
+  text-transform: none;
 }
 
 .section-num {
   font-weight: 700;
   color: var(--white-25);
+}
+
+.start-page button {
+  display: block;
+  background-color: var(--white);
+  border: 0;
+  border-radius: 50%;
+  width: 274px;
+  height: 274px;
+  cursor: pointer;
+  font-size: 32px;
+  color: var(--black);
+  font-family: "Bellefair", serif;
+  box-shadow: 0 0 0 0 transparent;
+  transition: box-shadow 0.5s ease-in-out;
+}
+
+.start-page button:hover {
+  box-shadow: 0 0 0 88px var(--white-10);
 }
