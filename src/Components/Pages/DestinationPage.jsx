@@ -19,13 +19,15 @@ export default function DestinationPage() {
       <div className="content">
         <h3>{destination.name}</h3>
         <p className="normal">{destination.description}</p>
-        <div>
-          <h4>Avg. Distance</h4>
-          <p>{destination.distance}</p>
-        </div>
-        <div>
-          <h4>Est. Travel Time</h4>
-          <p>{destination.travel}</p>
+        <div className="stats">
+          <div>
+            <h4>Avg. Distance</h4>
+            <span>{destination.distance}</span>
+          </div>
+          <div>
+            <h4>Est. Travel Time</h4>
+            <span>{destination.travel}</span>
+          </div>
         </div>
       </div>
     </article>

@@ -19,6 +19,7 @@
   font-size: 18px;
   font-family: "Barlow", sans-serif;
   font-weight: 400;
+  user-select: none;
 }
 
 :root:has(section.destinations-page) {
@@ -49,12 +50,26 @@ a {
   color: inherit;
 }
 
+img {
+  max-width: 100%;
+}
+
+hr {
+  border: 0;
+  border-top: 2px solid var(--white-25);
+  margin: 2rem 0;
+  width: 473px;
+  transform: translateX(9rem);
+  z-index: 2;
+}
+
 a:hover {
   /* color: var(--white); */
 }
 
 body {
   min-height: 100vh;
+  padding: 0 2rem;
 }
 
 #root {
@@ -77,6 +92,7 @@ header {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 4rem;
 }
 
 nav {
@@ -99,14 +115,42 @@ section.start-page .content {
   width: fit-content;
 }
 
+section:not(.start-page) .content {
+  width: 600px;
+}
+
 section.start-page .button-wrapper {
   width: 450px;
 }
 
-section.start-page .content p {
+section .content p {
   width: 444px;
+}
+
+section:not(.start-page) .content p {
+  padding-bottom: 2em;
+  border-bottom: 2px solid hsla(231, 15%, 26%, 1);
+}
+
+section .planet-wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+article .stats {
+  max-width: 444px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
   margin-top: 2rem;
-  margin-bottom: 2rem;
+}
+
+article .stats div {
+  margin-right: 2rem;
 }
 
 h1,
@@ -122,6 +166,14 @@ h2 {
   letter-spacing: 4.72px;
 }
 
+section h2 {
+  margin-bottom: 2rem;
+}
+
+h4 {
+  margin-bottom: 1rem;
+}
+
 .start-page h2 {
   color: var(--very-light-blue);
 }
@@ -132,6 +184,7 @@ h2 {
   line-height: 171.9px;
   color: var(--white);
   display: block;
+  margin: 2rem 0;
 }
 
 h3 {
@@ -151,38 +204,44 @@ p {
   color: var(--very-light-blue);
 }
 
-h4 + p {
+h4 + span {
   font-family: "Bellefair", serif;
   font-size: 28px;
   line-height: 32.09px;
   color: var(--white);
 }
 
+section nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
 nav ol {
   display: flex;
-  justify-content: flex-end;
   align-items: center;
 }
 
 ol.main-nav-list {
   /* https://stackoverflow.com/questions/3153019/remove-decimal-from-ordered-ol-list-via-css */
   counter-reset: item;
-
   background-color: var(--white-10);
   backdrop-filter: blur(1.5rem);
   padding-right: 2rem;
   border-radius: 1rem;
-}
-
-ol.destinations-nav-list {
-  list-style: none;
+  /* border-bottom: 2px solid var(--white-25);
+  border-top: 1px solid var(--white-50);
+  border-left: 1px solid var(--white-40);
+  border-right: 1px solid var(--white-40); */
 }
 
 ol.main-nav-list li {
   display: flex;
   align-items: center;
   margin-left: 2.5rem;
-  border-bottom: 2px solid transparent;
+  letter-spacing: 2.7px;
+  line-height: 19.2px;
+  font-size: 16px;
 }
 
 ol.main-nav-list li a {
@@ -191,29 +250,53 @@ ol.main-nav-list li a {
 
 ol.main-nav-list li a,
 ol.destinations-nav-list li a {
-  display: block;
+  display: flex;
+  align-items: center;
   width: 100%;
   height: 100%;
-  letter-spacing: 2.7px;
-  font-size: 16px;
+  color: var(--white-80);
+  transition: color 150ms ease-in-out, text-decoration-color 150ms ease-in-out;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.5rem;
+  text-decoration-color: transparent;
 }
 
-ol.main-nav-list li:hover,
+ol.main-nav-list li a:hover,
 ol.destinations-nav-list li a:hover {
-  border-bottom: 2px solid var(--white-50);
+  text-decoration-color: var(--white-50);
+  color: var(--white);
 }
 
 ol.main-nav-list li::before {
   display: block;
-  margin-right: 0.5rem;
+  padding-right: 0.5rem;
   content: "0" counter(item);
   counter-increment: item;
   font-weight: 700;
-  letter-spacing: 2.7px;
+  color: var(--white-50);
+  transition: color 150ms ease-in-out;
+  text-decoration: none;
+}
+
+ol.main-nav-list li a:hover::before {
+  color: var(--white);
 }
 
 p.normal {
   text-transform: none;
+}
+
+ol.destinations-nav-list {
+  list-style: none;
+  width: 600px;
+}
+
+ol.destinations-nav-list li {
+  margin-right: 1.5rem;
+  letter-spacing: 2.7px;
+  line-height: 19.2px;
+  font-size: 16px;
 }
 
 .section-num {
@@ -233,9 +316,23 @@ p.normal {
   color: var(--black);
   font-family: "Bellefair", serif;
   box-shadow: 0 0 0 0 transparent;
-  transition: box-shadow 0.5s ease-in-out;
+  transition: scale 0.2s ease-in-out;
+  animation: pulse 2000ms infinite ease-in-out;
 }
 
 .start-page button:hover {
-  box-shadow: 0 0 0 88px var(--white-10);
+  /* box-shadow: 0 0 0 88px var(--white-10); */
+  scale: 1.1;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 var(--white-10);
+  }
+  50% {
+    box-shadow: 0 0 0 88px var(--white-10);
+  }
+  100% {
+    box-shadow: 0 0 0 0 var(--white-10);
+  }
 }
