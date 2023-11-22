@@ -9,6 +9,7 @@ function AppProvider({ children }) {
   const [technology, setTechnology] = useState([]);
   const [sections, setSections] = useState([]);
   const [destination, setDestination] = useState({});
+  const [crewMember, setCrewMember] = useState({});
 
   async function getDestinations() {
     const response = await fetch("/src/assets/data/data.json");
@@ -21,7 +22,7 @@ function AppProvider({ children }) {
     const response = await fetch("/src/assets/data/data.json");
     const data = await response.json();
 
-    setCrew(data.crew);
+    setCrew(data.crew.map((crewMember) => crewMember.id));
   }
 
   async function getTechnology() {
@@ -47,17 +48,28 @@ function AppProvider({ children }) {
     setDestination(destination);
   }
 
+  async function getCrewMemberData(crewMemberID) {
+    const response = await fetch("/src/assets/data/data.json");
+    const data = await response.json();
+
+    const crewMember = data.crew.find((crewMember) => crewMember.id === crewMemberID);
+
+    setCrewMember(crewMember);
+  }
+
   const value = {
     destinations,
     crew,
     technology,
     sections,
     destination,
+    crewMember,
     getDestinations,
     getCrew,
     getTechnology,
     getSections,
     getDestinationData,
+    getCrewMemberData,
   };
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;

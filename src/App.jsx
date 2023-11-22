@@ -6,15 +6,20 @@ import "./App.css";
 
 function MainNav() {
   const { sections } = useContext(AppContext);
+
   return (
     <nav>
       <ol className="main-nav-list">
         <li key="home" value="0">
-          <NavLink to="/">Home</NavLink>
+          <NavLink to="/">
+            <span>Home</span>
+          </NavLink>
         </li>
         {sections.map((section, i) => (
           <li key={section} value={i + 1}>
-            <NavLink to={section}>{section}</NavLink>
+            <NavLink to={section}>
+              <span>{section === "destinations" ? "destination" : section}</span>
+            </NavLink>
           </li>
         ))}
       </ol>

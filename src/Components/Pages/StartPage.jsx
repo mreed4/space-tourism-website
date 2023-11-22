@@ -1,4 +1,8 @@
+import { useNavigate } from "react-router-dom";
+
 export default function StartPage() {
+  const navigate = useNavigate();
+
   return (
     <section className="start-page">
       <div className="content">
@@ -12,7 +16,9 @@ export default function StartPage() {
         </p>
       </div>
       <div className="button-wrapper">
-        <button>Explore</button>
+        <button className="btn" onClick={() => navigate("/destinations")}>
+          Explore
+        </button>
       </div>
     </section>
   );

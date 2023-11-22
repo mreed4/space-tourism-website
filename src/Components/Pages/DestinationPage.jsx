@@ -1,6 +1,7 @@
 import { useContext, useEffect } from "react";
-import { AppContext } from "../../Contexts/AppContext.jsx";
 import { useLocation } from "react-router-dom";
+
+import { AppContext } from "../../Contexts/AppContext.jsx";
 
 export default function DestinationPage() {
   const { getDestinationData, destination } = useContext(AppContext);
