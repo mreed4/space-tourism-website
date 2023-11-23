@@ -15,25 +15,12 @@ export default function CrewMemberPage() {
   return (
     <article className={`crew-member-page ${crewMemberID}`}>
       <div className="portrait-wrapper">
-        <img src={crewMember?.image} alt={crewMember?.name} />
+        <img src={crewMember?.images?.["webp"] || crewMember?.images?.["png"]} alt={crewMember?.name} />
       </div>
       <div className="content">
+        <span className="pseudo-header">{crewMember?.role}</span>
         <h3>{crewMember?.name}</h3>
         <p className="normal">{crewMember?.bio}</p>
-        <div className="stats">
-          <div>
-            <h4>Role</h4>
-            <span>{crewMember?.role}</span>
-          </div>
-          <div>
-            <h4>Experience</h4>
-            <span>{crewMember?.experience}</span>
-          </div>
-          <div>
-            <h4>Speciality</h4>
-            <span>{crewMember?.speciality}</span>
-          </div>
-        </div>
       </div>
     </article>
   );

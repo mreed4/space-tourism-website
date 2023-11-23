@@ -86,6 +86,11 @@ nav {
   font-family: "Barlow Condensed", sans-serif;
 }
 
+.crew-page nav {
+  position: absolute;
+  bottom: 5rem;
+}
+
 nav ol {
   display: flex;
   align-items: center;
@@ -118,6 +123,21 @@ h3 {
   font-family: "Bellefair", serif;
 }
 
+.crew-member-page .pseudo-header {
+  display: block;
+  font-family: "Bellefair", serif;
+  font-size: 32px;
+  line-height: 36.67px;
+  color: var(--white-50);
+  margin-bottom: 1rem;
+}
+
+.crew-member-page h3 {
+  font-size: 56px;
+  line-height: 64.18px;
+  margin-bottom: 2rem;
+}
+
 h4 {
   font-size: 14px;
   font-family: "Barlow Condensed", sans-serif;
@@ -128,6 +148,15 @@ h4 {
 p {
   line-height: 32px;
   color: var(--very-light-blue);
+}
+
+section .content p {
+  width: 444px;
+}
+
+.destination-page .content p {
+  padding-bottom: 2em;
+  border-bottom: 2px solid hsla(231, 15%, 26%, 1);
 }
 
 h4 + span {
@@ -150,6 +179,12 @@ section.start-page {
   align-items: center;
 }
 
+article.crew-member-page {
+  flex-direction: row-reverse;
+  /* align-items: flex-start; */
+  padding-top: 7rem;
+}
+
 section.start-page .content {
   display: flex;
   flex-direction: column;
@@ -162,17 +197,12 @@ section:not(.start-page) .content {
   width: 600px;
 }
 
+section.crew-page .content {
+  width: 700px;
+}
+
 section.start-page .button-wrapper {
   width: 450px;
-}
-
-section .content p {
-  width: 444px;
-}
-
-section:not(.start-page) .content p {
-  padding-bottom: 2em;
-  border-bottom: 2px solid hsla(231, 15%, 26%, 1);
 }
 
 section .planet-wrapper {
@@ -292,7 +322,7 @@ ol.destinations-nav-list li {
 }
 
 ol.destinations-nav-list li a {
-  color: var(--white-80);
+  color: var(--very-light-blue);
   display: flex;
   align-items: center;
   width: 100%;
@@ -318,14 +348,26 @@ ol.crew-nav-list li {
   display: block;
   width: 16px;
   height: 16px;
-  background-color: var(--white-80);
-  border-radius: 50%;
+  margin-right: 1rem;
 }
 
 ol.crew-nav-list li a {
   display: block;
   width: 100%;
   height: 100%;
+  border-radius: 50%;
+  background-color: transparent;
+  border: 2px solid var(--white-50);
+}
+
+ol.crew-nav-list li a:hover {
+  background-color: var(--white-50);
+  border: 2px solid var(--white);
+}
+
+ol.crew-nav-list li a.active {
+  background-color: var(--white);
+  border: 2px solid var(--white);
 }
 
 p.normal {
@@ -357,6 +399,23 @@ p.normal {
   scale: 1.1;
 }
 
+.crew-member-page {
+  /* animation: fly-and-fade 1s ease-in-out; */
+}
+
+.crew-member-page .portrait-wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.crew-member-page .portrait-wrapper img {
+  position: absolute;
+  bottom: 0;
+}
+
 @keyframes pulse {
   0% {
     box-shadow: 0 0 0 0 var(--white-10);
@@ -366,5 +425,16 @@ p.normal {
   }
   100% {
     box-shadow: 0 0 0 0 var(--white-10);
+  }
+}
+
+@keyframes fly-and-fade {
+  0% {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
   }
 }
