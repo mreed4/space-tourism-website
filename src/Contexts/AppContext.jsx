@@ -4,12 +4,22 @@ import PropTypes from "prop-types";
 const AppContext = createContext();
 
 function AppProvider({ children }) {
+  const [sections, setSections] = useState([]);
+
   const [destinations, setDestinations] = useState([]);
   const [crew, setCrew] = useState([]);
-  const [technology, setTechnology] = useState([]);
-  const [sections, setSections] = useState([]);
+  const [technologies, setTechnologies] = useState([]);
+
   const [destination, setDestination] = useState({});
   const [crewMember, setCrewMember] = useState({});
+  const [technology, setTechnology] = useState({});
+
+  async function getSections() {
+    const response = await fetch("/src/assets/data/data.json");
+    const data = await response.json();
+
+    setSections(Object.keys(data));
+  }
 
   async function getDestinations() {
     const response = await fetch("/src/assets/data/data.json");
@@ -25,18 +35,11 @@ function AppProvider({ children }) {
     setCrew(data.crew.map((crewMember) => crewMember.id));
   }
 
-  async function getTechnology() {
+  async function getTechnologies() {
     const response = await fetch("/src/assets/data/data.json");
     const data = await response.json();
 
-    setTechnology(data.technology);
-  }
-
-  async function getSections() {
-    const response = await fetch("/src/assets/data/data.json");
-    const data = await response.json();
-
-    setSections(Object.keys(data));
+    setTechnologies(data.technology.map((technology) => technology.id));
   }
 
   async function getDestinationData(destinationName) {
@@ -57,19 +60,30 @@ function AppProvider({ children }) {
     setCrewMember(crewMember);
   }
 
+  async function getTechnologyData(technologyID) {
+    const response = await fetch("/src/assets/data/data.json");
+    const data = await response.json();
+
+    const technology = data.technology.find((technology) => technology.id === technologyID);
+
+    setTechnology(technology);
+  }
+
   const value = {
     destinations,
     crew,
-    technology,
+    technologies,
     sections,
     destination,
     crewMember,
+    technology,
     getDestinations,
     getCrew,
-    getTechnology,
+    getTechnologies,
     getSections,
     getDestinationData,
     getCrewMemberData,
+    getTechnologyData,
   };
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
