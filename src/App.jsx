@@ -1,5 +1,5 @@
 import { useContext, useEffect } from "react";
-import { NavLink, Outlet } from "react-router-dom";
+import { NavLink, Outlet, Link } from "react-router-dom";
 import { AppContext } from "./Contexts/AppContext.jsx";
 
 import "./App.css";
@@ -38,7 +38,9 @@ function App() {
     <>
       <header>
         <h1>
-          <img src="/img/shared/logo.svg" alt="Space Tourism" />
+          <Link to="/">
+            <img src="/img/shared/logo.svg" alt="Space Tourism" />
+          </Link>
         </h1>
         <hr />
         <MainNav />

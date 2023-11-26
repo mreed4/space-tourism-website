@@ -180,14 +180,15 @@ section.start-page {
   align-items: center;
 }
 
+section.start-page {
+  margin-top: 10rem;
+}
+
 article.crew-member-page {
   flex-direction: row-reverse;
-  /* align-items: flex-start; */
-  /* padding-top: 7rem; */
 }
 
 article.technology-page {
-  /* flex-direction: row-reverse; */
   align-items: flex-start;
 }
 
