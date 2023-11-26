@@ -14,7 +14,15 @@ export default function TechnologyPage() {
 
   return (
     <article className={`technology-page ${technologyID}`}>
-      <h3>{technology.name}</h3>
+      <div className="content">
+        <span className="pseudo-header">The Terminology ...</span>
+        <h3>{technology.name}</h3>
+        <p className="normal">{technology?.description}</p>
+      </div>
+      <div className="image-wrapper">
+        <img src={technology?.images?.["portrait"]} alt={technology?.name} className="desktop" />
+        <img src={technology?.images?.["landscape"]} alt={technology?.name} className="mobile tablet" />
+      </div>
     </article>
   );
 }
